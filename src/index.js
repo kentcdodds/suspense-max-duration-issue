@@ -9,18 +9,18 @@ const Tilt = React.lazy(() => import('./tilt'))
 
 class App extends Component {
   state = {showTilt: false}
-  toggleTilt = () => this.setState(({showTilt}) => ({showTilt: !showTilt}))
+  toggleTilt = () =>
+    setTimeout(
+      () => this.setState(({showTilt}) => ({showTilt: !showTilt})),
+      100,
+    )
   render() {
     const {showTilt} = this.state
     return (
       <div>
         <label>
           show tilt
-          <input
-            type="checkbox"
-            checked={showTilt}
-            onChange={this.toggleTilt}
-          />
+          <input type="checkbox" onChange={this.toggleTilt} />
         </label>
 
         <div style={{height: 150, width: 200}} className="totally-centered">
